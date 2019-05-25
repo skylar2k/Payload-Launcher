@@ -16,5 +16,5 @@
 
 ## Credits
 
-[@SciresM](https://github.com/SciresM) For being a lawyer and creating the reboot to payload code.\
-[@XorTroll](https://github.com/XorTroll) For taking on too many projects and creating [Plutonium](https://github.com/XorTroll/Plutonium).
+[@SciresM](https://github.com/SciresM) For being a lawyer, and creating the reboot to payload code.\
+[@XorTroll](https://github.com/XorTroll) For taking on too many projects, and creating [Plutonium](https://github.com/XorTroll/Plutonium).
