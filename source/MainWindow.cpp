@@ -5,9 +5,8 @@ using namespace pu::draw;
 
 MainWindow::MainWindow() : pu::Layout()
 {
-	this->MainMenu = new pu::element::Menu(0, 160, 1280, Color(255, 255, 255, 255), 75, 8);
+	this->MainMenu = new pu::element::Menu(0, 160, 1280, Color(0, 0, 0, 0), 75, 8);
 	this->Add(this->MainMenu);
-	this->MainMenu->SetColor(Color(0,0,0,0));
 
 	this->AMSItem = new pu::element::MenuItem("Atmosphere");
 	this->HekateItem = new pu::element::MenuItem("Hekate");
