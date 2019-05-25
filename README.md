@@ -12,5 +12,5 @@
 
 ## Credits
 
-[@SciresM](https://github.com/SciresM) For being a lawyer and creating the reboot code.
+[@SciresM](https://github.com/SciresM) For being a lawyer and creating the reboot code.\
 [@XorTroll](https://github.com/XorTroll) For taking on to many projects and creating [Plutonium](https://github.com/XorTroll/Plutonium).
