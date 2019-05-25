@@ -10,6 +10,10 @@
 |ReiNX|sdmc:/payloads/ReiNX.bin|
 |Argon|sdmc:/payloads/argon-nx.bin|
 
+## Looks
+
+![Main layout](https://github.com/LordApple/Payload-Launcher/blob/master/Screenshots/main.jpg?raw=true)
+
 ## Credits
 
 [@SciresM](https://github.com/SciresM) For being a lawyer and creating the reboot code.\
