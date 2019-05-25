@@ -3,6 +3,8 @@
 *.lo
 *.o
 *.obj
+*.elf
+*.nacp
 
 # Precompiled Headers
 *.gch
@@ -26,3 +28,9 @@
 *.exe
 *.out
 *.app
+*.nro
+
+# Directories
+.vs
+.vscode
+build
