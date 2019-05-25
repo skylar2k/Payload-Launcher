@@ -43,7 +43,7 @@ MainApplication::MainApplication()
 
 	this->SetBackgroundColor(Color(68, 70, 76, 255));
 	
-	this->HeaderText = new pu::element::TextBlock(640, 15, "Payload Launcher", 40);
+	this->HeaderText = new pu::element::TextBlock(0, 15, "Payload Launcher", 40);
 	this->HeaderText->SetHorizontalAlign(pu::element::HorizontalAlign::Center);
 	this->HeaderText->SetColor(Color(0, 0, 0, 255));
 
