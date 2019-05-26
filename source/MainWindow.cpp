@@ -5,34 +5,32 @@ using namespace pu::draw;
 
 MainWindow::MainWindow() : pu::Layout()
 {
-	this->MainMenu = new pu::element::Menu(0, 160, 1280, Color(0, 0, 0, 0), 75, 8);
+	this->MainMenu = new pu::element::Menu(0, 160, 1280, Color(0, 0, 0, 0), 50, 8);
 	this->Add(this->MainMenu);
 
-	this->AMSItem = new pu::element::MenuItem("Atmosphere");
-	this->HekateItem = new pu::element::MenuItem("Hekate");
-	this->ReiNXItem = new pu::element::MenuItem("ReiNX");
-	this->ArgonItem = new pu::element::MenuItem("Argon");
+	this->AddPayloads();
+}
 
-	this->MainMenu->AddItem(this->AMSItem);
-	this->MainMenu->AddItem(this->HekateItem);
-	this->MainMenu->AddItem(this->ReiNXItem);
-	this->MainMenu->AddItem(this->ArgonItem);
+void MainWindow::AddPayloads(){
+	auto bins = getBins();
 
-	this->AMSItem->AddOnClick([&](){
-		rebootToPayload("payloads/fusee-primary.bin");
+	for (size_t x = 0; x < bins.size(); x++){		
+		this->MainMenu->AddItem(this->CreateMenuItem(bins[x].c_str()));
+	}
+}
+
+pu::element::MenuItem* MainWindow::CreateMenuItem(const char* payload){
+	pu::element::MenuItem* item = new pu::element::MenuItem(payload);
+
+	char Buffer[128]; 
+	strcpy(Buffer, "sdmc:/payloads/");
+    strcat(Buffer, payload);
+
+	item->AddOnClick([Buffer](){
+		rebootToPayload(Buffer);
 	},KEY_A);
 
-	this->HekateItem->AddOnClick([&](){
-		rebootToPayload("payloads/hekate.bin");
-	},KEY_A);
-
-	this->ReiNXItem->AddOnClick([&](){
-		rebootToPayload("payloads/ReiNX.bin");
-	},KEY_A);
-
-	this->ArgonItem->AddOnClick([&](){
-		rebootToPayload("payloads/argon-nx.bin");
-	},KEY_A);
+	return item;
 }
 
 MainApplication::MainApplication()

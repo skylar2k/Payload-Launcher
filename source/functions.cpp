@@ -50,18 +50,31 @@ void reboot_to_payload() {
 }
 //============================================================================================
 
-void rebootToPayload(const char* Payload){
+void rebootToPayload(const char* payload){
 	Result sp = splInitialize();
 	if(R_FAILED(sp)) return;
 
-	char buffer[32];
-	sprintf(buffer,"sdmc:/%s",Payload);
-
-	FILE* f = fopen(buffer,"rb");
+	FILE* f = fopen(payload,"rb");
 	if (!f) return;
 
 	fread(g_reboot_payload, 1, sizeof(g_reboot_payload), f);
     fclose(f);
 
 	reboot_to_payload();
+}
+
+std::vector<std::string> getBins()
+{
+	std::vector<std::string> bins;
+
+	if (auto dr = opendir("/payloads/.")) {
+		while (auto f = readdir(dr)) {
+			if (strstr(f->d_name,".bin")){
+				bins.push_back(f->d_name);
+			}
+		}
+		closedir(dr);
+	}
+
+	return bins;
 }
