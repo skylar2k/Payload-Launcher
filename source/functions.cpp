@@ -69,7 +69,7 @@ std::vector<std::string> getBins()
 
 	if (auto dr = opendir("/payloads/.")) {
 		while (auto f = readdir(dr)) {
-			if (strstr(f->d_name,".bin")){
+			if (strstr(f->d_name,".bin") && !(strstr(f->d_name, "._"))){
 				bins.push_back(f->d_name);
 			}
 		}

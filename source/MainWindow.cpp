@@ -46,4 +46,8 @@ MainApplication::MainApplication()
 	this->HeaderText->SetColor(Color(0, 0, 0, 255));
 
 	this->mainWindow->Add(this->HeaderText);
+
+	this->SetOnInput([&](u64 Down, u64 Up, u64 Held, bool Touch){
+		if (Down & KEY_L) this->Close();
+	});
 }
