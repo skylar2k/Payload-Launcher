@@ -1,14 +1,7 @@
 # Payload Launcher
 
 ## Payload Paths
-### Keep in mind that these paths are only hardcoded for the time being.
-
-|PAYLOAD|PATH
-|--|--
-|Atmosphere|sdmc:/payloads/fusee-primary.bin|
-|Hekate|sdmc:/payloads/hekate.bin|
-|ReiNX|sdmc:/payloads/ReiNX.bin|
-|Argon|sdmc:/payloads/argon-nx.bin|
+### To make payloads show up in the app, just add your payloads to `sdmc:/payloads/` and the app should find them all.
 
 ## Looks
 
