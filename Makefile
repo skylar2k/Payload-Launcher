@@ -42,6 +42,8 @@ BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
+APP_AUTHOR = Apple
+APP_VERSION = 2.0
 #ROMFS	:=	romfs
 
 #---------------------------------------------------------------------------------
