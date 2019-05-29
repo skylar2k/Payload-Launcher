@@ -3,6 +3,8 @@
 
 using namespace pu::draw;
 
+std::string fpayload(getFavPayload());
+
 MainWindow::MainWindow() : pu::Layout()
 {
 	this->MainMenu = new pu::element::Menu(0, 160, 1280, Color(0, 0, 0, 0), 50, 8);
@@ -30,6 +32,10 @@ pu::element::MenuItem* MainWindow::CreateMenuItem(const char* payload){
 		rebootToPayload(Buffer);
 	},KEY_A);
 
+	item->AddOnClick([Buffer](){
+		fpayload = writeFavPayload(Buffer);
+	}, KEY_X);
+
 	return item;
 }
 
@@ -49,5 +55,7 @@ MainApplication::MainApplication()
 
 	this->SetOnInput([&](u64 Down, u64 Up, u64 Held, bool Touch){
 		if (Down & KEY_L) this->Close();
+
+		if (Down & KEY_R) rebootToPayload(fpayload.c_str());
 	});
 }

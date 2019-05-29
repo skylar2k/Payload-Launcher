@@ -78,3 +78,21 @@ std::vector<std::string> getBins()
 
 	return bins;
 }
+
+std::string getFavPayload(){
+	CSimpleIniA ini;
+	ini.SetUnicode();
+	ini.LoadFile("sdmc:/payload-launcher.ini");
+
+	return ini.GetValue("fpayload", "path", "default");
+}
+
+std::string writeFavPayload(const char* payload){
+	CSimpleIniA ini;
+	ini.SetUnicode();
+	ini.LoadFile("sdmc:/payload-launcher.ini");
+	ini.SetValue("fpayload", "path", payload);
+	ini.SaveFile("sdmc:/payload-launcher.ini");
+
+	return getFavPayload();
+}
