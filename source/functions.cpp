@@ -79,20 +79,41 @@ std::vector<std::string> getBins()
 	return bins;
 }
 
+int checkIfFileExits(const char* path){
+	auto fileToCheck = fopen(path, "rb");
+	if (!fileToCheck) return 0;
+
+	fclose(fileToCheck);
+	return 1;
+}
+
+void createConfigFile(){
+	auto payloadsDir = opendir("sdmc:/payloads/");
+	if (payloadsDir) closedir(payloadsDir);
+	else mkdir("sdmc:/payloads/", 0700);
+
+	auto config = fopen("sdmc:/payloads/settings.ini", "wb");
+	fclose(config);
+}
+
 std::string getFavPayload(){
+	if (!checkIfFileExits("sdmc:/payloads/settings.ini")) createConfigFile();
+
 	CSimpleIniA ini;
 	ini.SetUnicode();
-	ini.LoadFile("sdmc:/payload-launcher.ini");
+	ini.LoadFile("sdmc:/payloads/settings.ini");
 
 	return ini.GetValue("fpayload", "path", "default");
 }
 
 std::string writeFavPayload(const char* payload){
+	if (!checkIfFileExits("sdmc:/payloads/settings.ini")) createConfigFile();
+
 	CSimpleIniA ini;
 	ini.SetUnicode();
-	ini.LoadFile("sdmc:/payload-launcher.ini");
+	ini.LoadFile("sdmc:/payloads/settings.ini");
 	ini.SetValue("fpayload", "path", payload);
-	ini.SaveFile("sdmc:/payload-launcher.ini");
+	ini.SaveFile("sdmc:/payloads/settings.ini");
 
 	return getFavPayload();
 }
