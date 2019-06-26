@@ -1,0 +1,10 @@
+*.elf
+*.nacp
+
+*.out
+*.app
+*.nro
+
+.vs
+.vscode
+build
